@@ -51,7 +51,7 @@ DeviceType:Centralized,LO-dimmerswitch
 
 #  ZigBee PRO network configuration.  Each endpoint belongs to a single network
 #  configuration.  There can be one or more network configurations.
-ZigbeeProNetwork:*Primary,ZA_COORDINATOR,Z3
+ZigbeeProNetwork:*Primary,ZA_COORDINATOR,HA
 
 #  Lists the channels that this application will be configured to use.
 Channels:11

@@ -80,7 +80,7 @@ PGM EmberAfGenericClusterFunction emberAfFuncArrayIdentifyClusterServer[] = { (E
   { \
     /* Primary */ \
     ZA_COORDINATOR, \
-    EMBER_AF_SECURITY_PROFILE_Z3, \
+    EMBER_AF_SECURITY_PROFILE_HA, \
   }, \
 }
 #define EM_AF_GENERATED_NETWORK_STRINGS  \
@@ -218,45 +218,45 @@ PGM EmberAfGenericClusterFunction emberAfFuncArrayIdentifyClusterServer[] = { (E
 
 
 #define EMBER_AF_GENERATED_PLUGIN_INIT_FUNCTION_DECLARATIONS \
+  void emberAfPluginConcentratorInitCallback(void); \
   void emberAfPluginCountersInitCallback(void); \
   void emberAfPluginEepromInitCallback(void); \
   void emberAfPluginIdleSleepInitCallback(void); \
   void emberAfPluginInterpanInitCallback(void); \
   void emberAfPluginZllCommissioningInitCallback(void); \
-  void emberAfPluginConcentratorInitCallback(void); \
 
 
 #define EMBER_AF_GENERATED_PLUGIN_INIT_FUNCTION_CALLS \
+  emberAfPluginConcentratorInitCallback(); \
   emberAfPluginCountersInitCallback(); \
   emberAfPluginEepromInitCallback(); \
   emberAfPluginIdleSleepInitCallback(); \
   emberAfPluginInterpanInitCallback(); \
   emberAfPluginZllCommissioningInitCallback(); \
-  emberAfPluginConcentratorInitCallback(); \
 
 
 #define EMBER_AF_GENERATED_PLUGIN_NCP_INIT_FUNCTION_DECLARATIONS \
+  void emberAfPluginConcentratorNcpInitCallback(bool memoryAllocation); \
   void emberAfPluginInterpanNcpInitCallback(bool memoryAllocation); \
   void emberAfPluginZllCommissioningNcpInitCallback(bool memoryAllocation); \
-  void emberAfPluginConcentratorNcpInitCallback(bool memoryAllocation); \
 
 
 #define EMBER_AF_GENERATED_PLUGIN_NCP_INIT_FUNCTION_CALLS \
+  emberAfPluginConcentratorNcpInitCallback(memoryAllocation); \
   emberAfPluginInterpanNcpInitCallback(memoryAllocation); \
   emberAfPluginZllCommissioningNcpInitCallback(memoryAllocation); \
-  emberAfPluginConcentratorNcpInitCallback(memoryAllocation); \
 
 
 #define EMBER_AF_GENERATED_PLUGIN_STACK_STATUS_FUNCTION_DECLARATIONS \
+  void emberAfPluginConcentratorStackStatusCallback(EmberStatus status); \
   void emberAfPluginNetworkSteeringStackStatusCallback(EmberStatus status); \
   void emberAfPluginZllCommissioningStackStatusCallback(EmberStatus status); \
-  void emberAfPluginConcentratorStackStatusCallback(EmberStatus status); \
 
 
 #define EMBER_AF_GENERATED_PLUGIN_STACK_STATUS_FUNCTION_CALLS \
+  emberAfPluginConcentratorStackStatusCallback(status); \
   emberAfPluginNetworkSteeringStackStatusCallback(status); \
   emberAfPluginZllCommissioningStackStatusCallback(status); \
-  emberAfPluginConcentratorStackStatusCallback(status); \
 
 
 #define EMBER_AF_GENERATED_PLUGIN_MESSAGE_SENT_FUNCTION_DECLARATIONS \

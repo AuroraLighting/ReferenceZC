@@ -25580,6 +25580,19 @@ void emberAfPluginBasicResetToFactoryDefaultsCallback(uint8_t endpoint);
 /** @} END Basic Server Cluster Plugin Callbacks */
 
 
+/** @name Concentrator Support Plugin Callbacks */
+// @{
+
+/** @brief Broadcast Sent
+ *
+ * This function is called when a new MTORR broadcast has been successfully
+ * sent by the concentrator plugin.
+ *
+ */
+void emberAfPluginConcentratorBroadcastSentCallback(void);
+/** @} END Concentrator Support Plugin Callbacks */
+
+
 /** @name Counters Plugin Callbacks */
 // @{
 
@@ -26009,19 +26022,6 @@ bool emberAfPluginZllCommissioningJoinCallback(EmberZigbeeNetwork *networkFound,
                                                uint8_t lqi,
                                                int8_t rssi);
 /** @} END ZLL Commissioning Plugin Callbacks */
-
-
-/** @name Concentrator Support Plugin Callbacks */
-// @{
-
-/** @brief Broadcast Sent
- *
- * This function is called when a new MTORR broadcast has been successfully
- * sent by the concentrator plugin.
- *
- */
-void emberAfPluginConcentratorBroadcastSentCallback(void);
-/** @} END Concentrator Support Plugin Callbacks */
 
 
 /** @} END addtogroup */
