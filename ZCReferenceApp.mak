@@ -146,6 +146,14 @@ SOURCE_FILES = \
 ../../../platform\base\hal\plugin\serial\serial.c \
 ../../../platform\base\hal\plugin\sim-eeprom1\sim-eeprom.c \
 ../../../protocol\zigbee\app\framework\plugin\simple-main\simple-main.c \
+../../../protocol\zigbee\app\framework\plugin\test-harness-z3\test-harness-z3-core.c \
+../../../protocol\zigbee\app\framework\plugin\test-harness-z3\test-harness-z3-mac.c \
+../../../protocol\zigbee\app\framework\plugin\test-harness-z3\test-harness-z3-nwk.c \
+../../../protocol\zigbee\app\framework\plugin\test-harness-z3\test-harness-z3-aps.c \
+../../../protocol\zigbee\app\framework\plugin\test-harness-z3\test-harness-z3-zll.c \
+../../../protocol\zigbee\app\framework\plugin\test-harness-z3\test-harness-z3-zdo.c \
+../../../protocol\zigbee\app\framework\plugin\test-harness-z3\test-harness-z3-ota-server.c \
+../../../protocol\zigbee\app\framework\plugin\test-harness-z3\test-harness-z3-zcl.c \
 ../../../protocol\zigbee\app\framework\plugin\update-tc-link-key\update-tc-link-key.c \
 ../../../protocol\zigbee\app\framework\plugin\zll-commissioning\zll-commissioning.c \
 ../../../protocol\zigbee\app\framework\plugin\zll-commissioning\zll-commissioning-cli.c \
@@ -276,14 +284,14 @@ CINC = -I./ \
 -I../../../hardware/kit/common/bsp \
   -I../../../platform/bootloader \
   -Ihal-config \
-  -I../../../platform/radio/rail_lib/protocol/ieee802154 \
-  -I../../../platform/radio/rail_lib/protocol/ble \
-  -I../../../platform/radio/rail_lib/common \
-  -I../../../platform/radio/rail_lib/chip/efr32/rf/common/cortex \
-  -I../../../platform/radio/rail_lib/chip/efr32 \
   -I../../../platform/radio/rail_lib/plugin/coexistence/hal/efr32 \
   -I../../../platform/radio/rail_lib/plugin/coexistence/common \
   -I../../../platform/radio/rail_lib/plugin/coexistence/protocol/ieee802154 \
+  -I../../../platform/radio/rail_lib/common \
+  -I../../../platform/radio/rail_lib/chip/efr32/rf/common/cortex \
+  -I../../../platform/radio/rail_lib/chip/efr32 \
+  -I../../../platform/radio/rail_lib/protocol/ieee802154 \
+  -I../../../platform/radio/rail_lib/protocol/ble \
  \
 
 TARGET = ZCReferenceApp

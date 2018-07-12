@@ -639,6 +639,46 @@
 			<locationURI>STUDIO_SDK_LOC/protocol/zigbee/app/framework/plugin/simple-main/simple-main.c</locationURI>
 		</link>
 		<link>
+			<name>test-harness-z3/test-harness-z3-aps.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/protocol/zigbee/app/framework/plugin/test-harness-z3/test-harness-z3-aps.c</locationURI>
+		</link>
+		<link>
+			<name>test-harness-z3/test-harness-z3-core.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/protocol/zigbee/app/framework/plugin/test-harness-z3/test-harness-z3-core.c</locationURI>
+		</link>
+		<link>
+			<name>test-harness-z3/test-harness-z3-mac.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/protocol/zigbee/app/framework/plugin/test-harness-z3/test-harness-z3-mac.c</locationURI>
+		</link>
+		<link>
+			<name>test-harness-z3/test-harness-z3-nwk.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/protocol/zigbee/app/framework/plugin/test-harness-z3/test-harness-z3-nwk.c</locationURI>
+		</link>
+		<link>
+			<name>test-harness-z3/test-harness-z3-ota-server.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/protocol/zigbee/app/framework/plugin/test-harness-z3/test-harness-z3-ota-server.c</locationURI>
+		</link>
+		<link>
+			<name>test-harness-z3/test-harness-z3-zcl.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/protocol/zigbee/app/framework/plugin/test-harness-z3/test-harness-z3-zcl.c</locationURI>
+		</link>
+		<link>
+			<name>test-harness-z3/test-harness-z3-zdo.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/protocol/zigbee/app/framework/plugin/test-harness-z3/test-harness-z3-zdo.c</locationURI>
+		</link>
+		<link>
+			<name>test-harness-z3/test-harness-z3-zll.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/protocol/zigbee/app/framework/plugin/test-harness-z3/test-harness-z3-zll.c</locationURI>
+		</link>
+		<link>
 			<name>update-tc-link-key/update-tc-link-key.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/protocol/zigbee/app/framework/plugin/update-tc-link-key/update-tc-link-key.c</locationURI>

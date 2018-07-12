@@ -1166,6 +1166,579 @@
 
 /** @} */ // end group plugin-network-steering
 
+/** @addtogroup plugin-test-harness-z3 Plugin Commands: ZigBee 3.0 Test Harness
+ * @ingroup cli
+ * The test harness commands are used to test various unusual functionality or
+ * behavior of a remote device.
+ * 
+ * @{
+ */
+
+/** @brief <b>plugin test-harness packet-printing aps-printing disable </b>
+ *   - <i>Disable the printing of APS commands.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_PACKET_PRINTING_APS_PRINTING_DISABLE
+
+/** @brief <b>plugin test-harness packet-printing aps-printing enable </b>
+ *   - <i>Enable the printing of APS commands.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_PACKET_PRINTING_APS_PRINTING_ENABLE
+
+/** @brief <b>plugin test-harness packet-printing beacon-printing disable </b>
+ *   - <i>Disable the printing of beacon requests and received beacons.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_PACKET_PRINTING_BEACON_PRINTING_DISABLE
+
+/** @brief <b>plugin test-harness packet-printing beacon-printing enable </b>
+ *   - <i>Enable the printing of beacon requests and received beacons.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_PACKET_PRINTING_BEACON_PRINTING_ENABLE
+
+/** @brief <b>plugin test-harness packet-printing nwk-printing disable </b>
+ *   - <i>Disable the printing of network commands.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_PACKET_PRINTING_NWK_PRINTING_DISABLE
+
+/** @brief <b>plugin test-harness packet-printing nwk-printing enable </b>
+ *   - <i>Enable the printing of network commands.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_PACKET_PRINTING_NWK_PRINTING_ENABLE
+
+/** @brief <b>plugin test-harness packet-printing zdo-printing disable </b>
+ *   - <i>Disable the printing of ZDO commands.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_PACKET_PRINTING_ZDO_PRINTING_DISABLE
+
+/** @brief <b>plugin test-harness packet-printing zdo-printing enable </b>
+ *   - <i>Enable the printing of ZDO commands.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_PACKET_PRINTING_ZDO_PRINTING_ENABLE
+
+/** @brief <b>plugin test-harness z3 aps aps-remove-device [parentLongAddress:-1] [destinationLongAddress:-1] [options:4] </b>
+ *   - <i>Send an APS remove device command.</i>
+ *     - parentLongAddress - OCTET_STRING - The long address of the parent whose child will be removed.
+ *     - destinationLongAddress - OCTET_STRING - The long address of the node which will be removed.
+ *     - options - INT32U - The negative behavior options for this command. 
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_APS_APS_REMOVE_DEVICE
+
+/** @brief <b>plugin test-harness z3 aps aps-remove-device-config [options:4] </b>
+ *   - <i>Configures the APS remove device command handling.</i>
+ *     - options - INT32U - The negative behavior options for this command. 
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_APS_APS_REMOVE_DEVICE_CONFIG
+
+/** @brief <b>plugin test-harness z3 aps aps-request-key [destination:2] [keyType:1] [partnerAddress:-1] [options:4] </b>
+ *   - <i>Send an APS request key command.</i>
+ *     - destination - INT16U - The short address destination of the command.
+ *     - keyType - INT8U - The key type in the command payload.
+ *     - partnerAddress - OCTET_STRING - The partner address for the requested link key.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_APS_APS_REQUEST_KEY
+
+/** @brief <b>plugin test-harness z3 beacon beacon-req </b>
+ *   - <i>Send a beacon request.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_BEACON_BEACON_REQ
+
+/** @brief <b>plugin test-harness z3 beacon beacons-config [options:4] </b>
+ *   - <i>Send a beacon.</i>
+ *     - options - INT32U - The negative behavior options for this command. 
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_BEACON_BEACONS_CONFIG
+
+/** @brief <b>plugin test-harness z3 install-code clear </b>
+ *   - <i>Clear the install code from the device.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_INSTALL_CODE_CLEAR
+
+/** @brief <b>plugin test-harness z3 install-code set [installCode:-1] </b>
+ *   - <i>Clear the install code from the device.</i>
+ *     - installCode - OCTET_STRING - The install code for this device to use.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_INSTALL_CODE_SET
+
+/** @brief <b>plugin test-harness z3 legacy-profile disable </b>
+ *   - <i>Disable using the legacy profile of 0xC05E for ZLL commands.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_LEGACY_PROFILE_DISABLE
+
+/** @brief <b>plugin test-harness z3 legacy-profile enable </b>
+ *   - <i>Enable using the legacy profile of 0xC05E for ZLL commands.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_LEGACY_PROFILE_ENABLE
+
+/** @brief <b>plugin test-harness z3 mgmt leave [destination:2] [removeChildren:1] [rejoin:1] [options:4] </b>
+ *   - <i>Unicast a permit joining command.</i>
+ *     - destination - INT16U - The destination address of the command.
+ *     - removeChildren - BOOLEAN - Whether or not the leaving device should remove its children.
+ *     - rejoin - BOOLEAN - Whether or not the destination node should rejoin the network.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_MGMT_LEAVE
+
+/** @brief <b>plugin test-harness z3 mgmt nwk-update-request [scanChannel:2] [scanDuration:2] [scanCount:1] [destination:2] [options:4] </b>
+ *   - <i>Unicast a network update command.</i>
+ *     - scanChannel - INT16U - The scan channel for the command.
+ *     - scanDuration - INT16U - The scan duration for the command.
+ *     - scanCount - INT8U - The scan count for the command.
+ *     - destination - INT16U - The scan destination.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_MGMT_NWK_UPDATE_REQUEST
+
+/** @brief <b>plugin test-harness z3 mgmt permit-joining-req [permitDurationS:2] [destination:2] [options:4] </b>
+ *   - <i>Unicast a permit joining command.</i>
+ *     - permitDurationS - INT16U - The permit duration, in seconds.
+ *     - destination - INT16U - The destination address of the command.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_MGMT_PERMIT_JOINING_REQ
+
+/** @brief <b>plugin test-harness z3 nwk get-network-update-id </b>
+ *   - <i>Get the current network update id.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_NWK_GET_NETWORK_UPDATE_ID
+
+/** @brief <b>plugin test-harness z3 nwk ieee-addr-rsp-config issuer-nwk-address-remote-dev </b>
+ *   - <i>Configure the next outgoing IEEE address request.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_NWK_IEEE_ADDR_RSP_CONFIG_ISSUER_NWK_ADDRESS_REMOTE_DEV
+
+/** @brief <b>plugin test-harness z3 nwk ieee-addr-rsp-config reset </b>
+ *   - <i>Configure the next outgoing IEEE address request.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_NWK_IEEE_ADDR_RSP_CONFIG_RESET
+
+/** @brief <b>plugin test-harness z3 nwk ieee-addr-rsp-config status-device-not-found </b>
+ *   - <i>Configure the next outgoing IEEE address request.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_NWK_IEEE_ADDR_RSP_CONFIG_STATUS_DEVICE_NOT_FOUND
+
+/** @brief <b>plugin test-harness z3 nwk nwk-key-supression off </b>
+ *   - <i>Do not supress network leave commands.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_NWK_NWK_KEY_SUPRESSION_OFF
+
+/** @brief <b>plugin test-harness z3 nwk nwk-key-supression on </b>
+ *   - <i>Supress network leave commands.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_NWK_NWK_KEY_SUPRESSION_ON
+
+/** @brief <b>plugin test-harness z3 nwk nwk-leave [rejoin:1] [request:1] [removeChildren:1] [destination:2] [options:4] </b>
+ *   - <i>Send a Network Leave command.</i>
+ *     - rejoin - BOOLEAN - Whether or not the device should rejoin.
+ *     - request - BOOLEAN - Whether or not this command is a request.
+ *     - removeChildren - BOOLEAN - Whether or not the leaving device should remove its children.
+ *     - destination - INT16U - The destination address of the command.
+ *     - options - INT32U - The negative behavior options for this command. 
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_NWK_NWK_LEAVE
+
+/** @brief <b>plugin test-harness z3 nwk nwk-leave-supression off </b>
+ *   - <i>Do not supress network leave commands.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_NWK_NWK_LEAVE_SUPRESSION_OFF
+
+/** @brief <b>plugin test-harness z3 nwk nwk-leave-supression on </b>
+ *   - <i>Supress network leave commands.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_NWK_NWK_LEAVE_SUPRESSION_ON
+
+/** @brief <b>plugin test-harness z3 nwk nwk-rejoin-request [destination:2] </b>
+ *   - <i>Send a Rejoin Request command.</i>
+ *     - destination - INT16U - The destination address of the command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_NWK_NWK_REJOIN_REQUEST
+
+/** @brief <b>plugin test-harness z3 nwk nwk-rejoin-response [newAddress:2] [status:1] [destination:2] </b>
+ *   - <i>Send a Rejoin Response command.</i>
+ *     - newAddress - INT16U - The new short address of the destination node.
+ *     - status - INT8U - The status of the rejoin.
+ *     - destination - INT16U - The destination address of the command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_NWK_NWK_REJOIN_RESPONSE
+
+/** @brief <b>plugin test-harness z3 nwk set-network-update-id [updateId:1] </b>
+ *   - <i>Set the network update id in the current network parameters block.</i>
+ *     - updateId - INT8U - The new network update id. 
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_NWK_SET_NETWORK_UPDATE_ID
+
+/** @brief <b>plugin test-harness z3 ota-server activate [shortAddress:2] [destinationEndpoint:1] [manufacturerCode:2] [imageType:2] [fileVersion:4] [fileSize:4] </b>
+ *   - <i>Configuration command to set up OTA server.</i>
+ *     - shortAddress - INT16U - Short Address 
+ *     - destinationEndpoint - INT8U - Destination Endpoint 
+ *     - manufacturerCode - INT16U - Manufacturer Code.
+ *     - imageType - INT16U - Image Type.
+ *     - fileVersion - INT32U - File Version
+ *     - fileSize - INT32U - File Size
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_OTA_SERVER_ACTIVATE
+
+/** @brief <b>plugin test-harness z3 ota-server deactivate </b>
+ *   - <i>Configuration command to set up OTA server.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_OTA_SERVER_DEACTIVATE
+
+/** @brief <b>plugin test-harness z3 platform </b>
+ *   - <i>Print the platform information for this device.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_PLATFORM
+
+/** @brief <b>plugin test-harness z3 reset </b>
+ *   - <i>Resets the device to a factory new state (empty tables, attributes at default values, no events queued etc) without resetting the any of the physical hardware that could cause the device to not operate on the same serial connection.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_RESET
+
+/** @brief <b>plugin test-harness z3 set-device-mode [mode:1] </b>
+ *   - <i>Set the node ID to be used on the device.</i>
+ *     - mode - INT8U - The device mode.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_SET_DEVICE_MODE
+
+/** @brief <b>plugin test-harness z3 set-pan-id [panId:2] </b>
+ *   - <i>Set the PAN ID to be used by the Network Creator plugin.</i>
+ *     - panId - INT16U - The PAN ID for the Network Creator plugin to use.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_SET_PAN_ID
+
+/** @brief <b>plugin test-harness z3 set-short-address [nodeId:2] </b>
+ *   - <i>Set the node ID to be used on the device.</i>
+ *     - nodeId - INT16U - The node ID to use as this device's short ID.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_SET_SHORT_ADDRESS
+
+/** @brief <b>plugin test-harness z3 touchlink device-information-request [startIndex:1] [options:4] </b>
+ *   - <i>Send an device information request to the target found in the scan request process.</i>
+ *     - startIndex - INT8U - The start index in the device information request command
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_DEVICE_INFORMATION_REQUEST
+
+/** @brief <b>plugin test-harness z3 touchlink device-information-request-w-target [startIndex:1] [shortAddress:2] [options:4] </b>
+ *   - <i>Send an device information request to the target specefied with the short address in the command.</i>
+ *     - startIndex - INT8U - The start index in the device information request command
+ *     - shortAddress - INT16U - The short address of the target
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_DEVICE_INFORMATION_REQUEST_W_TARGET
+
+/** @brief <b>plugin test-harness z3 touchlink device-information-response-config [options:4] </b>
+ *   - <i>Configure the next device information response.</i>
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_DEVICE_INFORMATION_RESPONSE_CONFIG
+
+/** @brief <b>plugin test-harness z3 touchlink get-endpoint-list-request [startIndex:1] </b>
+ *   - <i>Send a get endpoint list request.</i>
+ *     - startIndex - INT8U - The start index in the command payload.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_GET_ENDPOINT_LIST_REQUEST
+
+/** @brief <b>plugin test-harness z3 touchlink get-group-identifiers-request [startIndex:1] </b>
+ *   - <i>Send a get group identifiers request.</i>
+ *     - startIndex - INT8U - The start index in the command payload.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_GET_GROUP_IDENTIFIERS_REQUEST
+
+/** @brief <b>plugin test-harness z3 touchlink identify-request [duration:2] [options:4] </b>
+ *   - <i>Send an identify request to the target found in the scan request process.</i>
+ *     - duration - INT16U - The duration length of the identify state.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_IDENTIFY_REQUEST
+
+/** @brief <b>plugin test-harness z3 touchlink is-scanning </b>
+ *   - <i>Print out whether or not the device is currently performing the scan process for touchlinking.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_IS_SCANNING
+
+/** @brief <b>plugin test-harness z3 touchlink network-join-end-device-request [networkAddress:2] [freeAddrBegin:2] [freeAddrEnd:2] [freeGroupBegin:2] [freeGroupEnd:2] [options:4] </b>
+ *   - <i>Send a network end device join request to the target found in the scan request process.</i>
+ *     - networkAddress - INT16U - The designated node ID for the target node.
+ *     - freeAddrBegin - INT16U - The free address range begin.
+ *     - freeAddrEnd - INT16U - The free address range end.
+ *     - freeGroupBegin - INT16U - The free group range begin.
+ *     - freeGroupEnd - INT16U - The free group range end.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_NETWORK_JOIN_END_DEVICE_REQUEST
+
+/** @brief <b>plugin test-harness z3 touchlink network-join-router-request [networkAddress:2] [freeAddrBegin:2] [freeAddrEnd:2] [freeGroupBegin:2] [freeGroupEnd:2] [options:4] </b>
+ *   - <i>Send a network router join request to the target found in the scan request process.</i>
+ *     - networkAddress - INT16U - The designated node ID for the target node.
+ *     - freeAddrBegin - INT16U - The free address range begin.
+ *     - freeAddrEnd - INT16U - The free address range end.
+ *     - freeGroupBegin - INT16U - The free group range begin.
+ *     - freeGroupEnd - INT16U - The free group range end.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_NETWORK_JOIN_ROUTER_REQUEST
+
+/** @brief <b>plugin test-harness z3 touchlink network-join-router-response-config [options:4] </b>
+ *   - <i>Configure the next outgoing network join router response command.</i>
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_NETWORK_JOIN_ROUTER_RESPONSE_CONFIG
+
+/** @brief <b>plugin test-harness z3 touchlink network-start-request [networkAddress:2] [freeAddrBegin:2] [freeAddrEnd:2] [freeGroupBegin:2] [freeGroupEnd:2] [options:4] </b>
+ *   - <i>Send a network start request to the target found in the scan request process.</i>
+ *     - networkAddress - INT16U - The designated node ID for the target node.
+ *     - freeAddrBegin - INT16U - The free address range begin.
+ *     - freeAddrEnd - INT16U - The free address range end.
+ *     - freeGroupBegin - INT16U - The free group range begin.
+ *     - freeGroupEnd - INT16U - The free group range end.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_NETWORK_START_REQUEST
+
+/** @brief <b>plugin test-harness z3 touchlink network-start-response-config [options:4] </b>
+ *   - <i>Configure the next outgoing network start response command.</i>
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_NETWORK_START_RESPONSE_CONFIG
+
+/** @brief <b>plugin test-harness z3 touchlink network-update-request [options:4] </b>
+ *   - <i>Send a network update request.</i>
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_NETWORK_UPDATE_REQUEST
+
+/** @brief <b>plugin test-harness z3 touchlink reset-to-factory-new-request [options:4] </b>
+ *   - <i>Send a reset to factory new request to the target found in the scan request process.</i>
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_RESET_TO_FACTORY_NEW_REQUEST
+
+/** @brief <b>plugin test-harness z3 touchlink scan-request-process [linkInitiator:1] [unused:2] [options:4] </b>
+ *   - <i>Start the scan request process.</i>
+ *     - linkInitiator - INT8U - The link initiator bit in scan requests.
+ *     - unused - INT16U - This argument is unsed.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_SCAN_REQUEST_PROCESS
+
+/** @brief <b>plugin test-harness z3 touchlink scan-response-config [options:4] </b>
+ *   - <i>Configure the next scan response.</i>
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_SCAN_RESPONSE_CONFIG
+
+/** @brief <b>plugin test-harness z3 touchlink start-as-router [panId:2] [options:4] </b>
+ *   - <i>Start a distributed network on which to perform ZLL operations.</i>
+ *     - panId - INT16U - The PAN ID that will be used.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_TOUCHLINK_START_AS_ROUTER
+
+/** @brief <b>plugin test-harness z3 zcl read [clusterId:2] [attributeId:2] [destination:2] [srcEndpoint:1] [dstEndpoint:1] [profileId:2] </b>
+ *   - <i>Send a ZCL ReadAttribute command.</i>
+ *     - clusterId - INT16U - The cluster ID in the command.
+ *     - attributeId - INT16U - The attribute ID in the command.
+ *     - destination - INT16U - The destination of the command.
+ *     - srcEndpoint - INT8U - The source endpoint of the command.
+ *     - dstEndpoint - INT8U - The destination endpoint of the command.
+ *     - profileId - INT16U - The profile ID in the command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZCL_READ
+
+/** @brief <b>plugin test-harness z3 zdo active-endpoint-request [destination:2] [networkAddressOfInterest:2] [options:4] </b>
+ *   - <i>Unicast an active endpoint request.</i>
+ *     - destination - INT16U - The destination address of the command.
+ *     - networkAddressOfInterest - INT16U - The network address of interest.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_ACTIVE_ENDPOINT_REQUEST
+
+/** @brief <b>plugin test-harness z3 zdo bc-device-announce [shortAddress:2] [ieeeAddress:8] </b>
+ *   - <i>Rebroadcast a "fake" ZDO device announce. The device sets random frame counter values to appear as though the DeviceAnnounce has been rebroadcasted from another device on the network out of range of the DUT.</i>
+ *     - shortAddress - INT16U - Short address of the fake device announce
+ *     - ieeeAddress - IEEE_ADDRESS - IEEE address of the fake device announce
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_BC_DEVICE_ANNOUNCE
+
+/** @brief <b>plugin test-harness z3 zdo bind [destination:2] [source Endpoint:1] [destEndpoint:1] [cluster:2] [remoteEUI64:8] [destEUI64:8] </b>
+ *   - <i>Send a ZDO Bind command to a device specified in the command arguments.</i>
+ *     - destination - INT16U - Two byte destination node id
+ *     - source Endpoint - INT8U - Remote device's source endpoint to bind
+ *     - destEndpoint - INT8U - Remote endpoint to bind
+ *     - cluster - INT16U - Cluster on which to bind
+ *     - remoteEUI64 - IEEE_ADDRESS - Remote node EUI64
+ *     - destEUI64 - IEEE_ADDRESS - Binding's dest EUI64.  Usually the local node's EUI64
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_BIND
+
+/** @brief <b>plugin test-harness z3 zdo bind-group [shortAddress:2] [sourceEndpoint:1] [destEndpoint:1] [destination:2] [cluster:2] [srcAddress:8] </b>
+ *   - <i>Send a ZDO bind command to a device specified to create a groupcast binding.</i>
+ *     - shortAddress - INT16U - The destination of the ZDO command
+ *     - sourceEndpoint - INT8U - Remote device's source endpoint to bind
+ *     - destEndpoint - INT8U - Remote endpoint to bind
+ *     - destination - INT16U - Two byte destination address for the binding
+ *     - cluster - INT16U - Cluster on which to bind
+ *     - srcAddress - IEEE_ADDRESS - The source IEEE address for the binding
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_BIND_GROUP
+
+/** @brief <b>plugin test-harness z3 zdo ieee-addr-req [addrOfInterest:2] [type:1] [startIndex:1] [destination:2] [options:4] </b>
+ *   - <i>Send an IEEE address request.</i>
+ *     - addrOfInterest - INT16U - The short address of interest
+ *     - type - INT8U - The request type.
+ *     - startIndex - INT8U - The start index for the requested elements of the associated devices list if the type of this command is Extended response.
+ *     - destination - INT16U - The destination address of the command.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_IEEE_ADDR_REQ
+
+/** @brief <b>plugin test-harness z3 zdo in-cl-list add [clusterId:2] </b>
+ *   - <i>Add clusters to the known server (in) clusters on this device.</i>
+ *     - clusterId - INT16U - Server cluster id
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_IN_CL_LIST_ADD
+
+/** @brief <b>plugin test-harness z3 zdo in-cl-list clear </b>
+ *   - <i>Clear the ZDO list of server (in) clusters.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_IN_CL_LIST_CLEAR
+
+/** @brief <b>plugin test-harness z3 zdo leave [target:2] [removeChildren:1] [rejoin:1] </b>
+ *   - <i>Send a ZDO Management Leave command to the target device.</i>
+ *     - target - INT16U - Target node ID
+ *     - removeChildren - BOOLEAN - Remove children
+ *     - rejoin - BOOLEAN - Rejoin after leave
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_LEAVE
+
+/** @brief <b>plugin test-harness z3 zdo match-desc-req [destination:2] [networkAddressOfInterest:2] [profileId:2] [options:4] </b>
+ *   - <i>Unicast a match descriptor request.</i>
+ *     - destination - INT16U - The destination address of the command.
+ *     - networkAddressOfInterest - INT16U - The network address of interest.
+ *     - profileId - INT16U - The profile id in the APS header of the command.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_MATCH_DESC_REQ
+
+/** @brief <b>plugin test-harness z3 zdo match-desc-rsp-config [networkAddressOfInterest:2] [status:1] [options:4] </b>
+ *   - <i>Configure the next outgoing match descriptor response.</i>
+ *     - networkAddressOfInterest - INT16U - The network address of interest.
+ *     - status - INT8U - The status for the response command.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_MATCH_DESC_RSP_CONFIG
+
+/** @brief <b>plugin test-harness z3 zdo mgmt-bind [target:2] [startIndex:1] </b>
+ *   - <i>Send a ZDO MGMT-Bind (Binding Table) Request to the target device.</i>
+ *     - target - INT16U - Target node ID
+ *     - startIndex - INT8U - Starting index into table query
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_MGMT_BIND
+
+/** @brief <b>plugin test-harness z3 zdo mgmt-lqi [target:2] [startIndex:1] </b>
+ *   - <i>Send a ZDO MGMT-LQI (LQI Table) Request to the target device.</i>
+ *     - target - INT16U - Target node ID
+ *     - startIndex - INT8U - Starting index into table query
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_MGMT_LQI
+
+/** @brief <b>plugin test-harness z3 zdo node [target:2] </b>
+ *   - <i>Sends a node descriptor request to a given target device</i>
+ *     - target - INT16U - Two byte address for the target device.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_NODE
+
+/** @brief <b>plugin test-harness z3 zdo node-desc-req [destination:2] </b>
+ *   - <i>Unicast a node descriptor request.</i>
+ *     - destination - INT16U - The destination address of the command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_NODE_DESC_REQ
+
+/** @brief <b>plugin test-harness z3 zdo nwk-addr-req [ieeeAddress:8] [type:1] [startIndex:1] [destination:2] [options:4] </b>
+ *   - <i>Send a ZDO address request.</i>
+ *     - ieeeAddress - IEEE_ADDRESS - The long address of the destination.
+ *     - type - INT8U - The type of the rejoin request.
+ *     - startIndex - INT8U - The start index for the requested elements of the associated devices list if the type of this command is Extended response.
+ *     - destination - INT16U - The destination address of the command.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_NWK_ADDR_REQ
+
+/** @brief <b>plugin test-harness z3 zdo out-cl-list add [clusterId:2] </b>
+ *   - <i>Add clusters to the known client (out) clusters on this device.</i>
+ *     - clusterId - INT16U - Client cluster ids
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_OUT_CL_LIST_ADD
+
+/** @brief <b>plugin test-harness z3 zdo out-cl-list clear </b>
+ *   - <i>Clear the ZDO list of client (out) clusters.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_OUT_CL_LIST_CLEAR
+
+/** @brief <b>plugin test-harness z3 zdo power [target:2] </b>
+ *   - <i>Send a ZDO Power Descriptor Request to the target device.</i>
+ *     - target - INT16U - Target node ID
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_POWER
+
+/** @brief <b>plugin test-harness z3 zdo route [target:2] [index:1] </b>
+ *   - <i>Send a ZDO route request command to the target.</i>
+ *     - target - INT16U - Target node ID
+ *     - index - INT8U - The index of the remote node's routing table to request.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_ROUTE
+
+/** @brief <b>plugin test-harness z3 zdo simple-desc-req [destination:2] [endpoint:1] [networkAddressOfInterest:2] [options:4] </b>
+ *   - <i>Unicast a simple descriptor request.</i>
+ *     - destination - INT16U - The destination address of the command.
+ *     - endpoint - INT8U - The endpoint for the simple descriptor request.
+ *     - networkAddressOfInterest - INT16U - The network address of interest.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_SIMPLE_DESC_REQ
+
+/** @brief <b>plugin test-harness z3 zdo simple-desc-rsp-config [networkAddressOfInterest:2] [status:1] [length:1] [options:4] </b>
+ *   - <i>Configure the next outgoing simple descriptor response.</i>
+ *     - networkAddressOfInterest - INT16U - The network address of interest.
+ *     - status - INT8U - The status for the response command.
+ *     - length - INT8U - The trimmed length of the command.
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_SIMPLE_DESC_RSP_CONFIG
+
+/** @brief <b>plugin test-harness z3 zdo unbind group [target:2] [source eui64:8] [source endpoint:1] [clusterID:2] [groupAddress:2] </b>
+ *   - <i>Sends an unbind request for a multicast binding to the target device.</i>
+ *     - target - INT16U - Target node ID
+ *     - source eui64 - IEEE_ADDRESS - The source EUI64 of the binding (the remote device's EUI64)
+ *     - source endpoint - INT8U - The source endpoint of the binding.
+ *     - clusterID - INT16U - The cluster ID to unbind.
+ *     - groupAddress - INT16U - The group address in the binding
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_UNBIND_GROUP
+
+/** @brief <b>plugin test-harness z3 zdo unbind unicast [target:2] [source eui64:8] [source endpoint:1] [clusterID:2] [destinationEUI64:8] [destEndpoint:1] </b>
+ *   - <i>Sends an unbind request for a unicast binding to the target device.</i>
+ *     - target - INT16U - Target node ID
+ *     - source eui64 - IEEE_ADDRESS - The source EUI64 of the binding (the remote device's EUI64)
+ *     - source endpoint - INT8U - The source endpoint of the binding.
+ *     - clusterID - INT16U - The cluster ID to unbind.
+ *     - destinationEUI64 - IEEE_ADDRESS - The destination EUI64 in the binding (usually the local node's EUI64
+ *     - destEndpoint - INT8U - The destination endpoint of the binding
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_UNBIND_UNICAST
+
+/** @brief <b>plugin test-harness z3 zdo zdo-node-desc-rsp-config [options:4] </b>
+ *   - <i>Configure the next outgoing node descriptor response.</i>
+ *     - options - INT32U - The negative behavior options for this command.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_ZDO_NODE_DESC_RSP_CONFIG
+
+/** @brief <b>plugin test-harness z3 zdo zdo-reset </b>
+ *   - <i>Reset any pending negative ZDO behavior.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_TEST_HARNESS_Z3_PLUGIN_TEST_HARNESS_Z3_ZDO_ZDO_RESET
+
+/** @} */ // end group plugin-test-harness-z3
+
 /** @addtogroup plugin-zll-commissioning Plugin Commands: ZigBee Light Link (ZLL) Commissioning
  * @ingroup cli
  * The ZigBee Light Link (ZLL) Commissioning Plugin contributes several commands
@@ -1940,6 +2513,16 @@
  */
 
 /** @} */ // end group plugin-network-steering
+
+/** @addtogroup plugin-test-harness-z3 Plugin Commands: ZigBee 3.0 Test Harness
+ * @ingroup cli
+ * The test harness commands are used to test various unusual functionality or
+ * behavior of a remote device.
+ * 
+ * @{
+ */
+
+/** @} */ // end group plugin-test-harness-z3
 
 /** @addtogroup plugin-zll-commissioning Plugin Commands: ZigBee Light Link (ZLL) Commissioning
  * @ingroup cli

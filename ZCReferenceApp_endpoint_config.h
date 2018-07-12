@@ -138,6 +138,11 @@ PGM EmberAfGenericClusterFunction emberAfFuncArrayIdentifyClusterServer[] = { (E
   extern EmberEventControl emberAfPluginInterpanFragmentTransmitEventControl; \
   extern EmberEventControl emberAfPluginNetworkSteeringFinishSteeringEventControl; \
   extern EmberEventControl emberAfPluginScanDispatchScanEventControl; \
+  extern EmberEventControl emberAfPluginTestHarnessZ3BeaconSendEventControl; \
+  extern EmberEventControl emberAfPluginTestHarnessZ3OpenNetworkEventControl; \
+  extern EmberEventControl emberAfPluginTestHarnessZ3ResetKeyEventControl; \
+  extern EmberEventControl emberAfPluginTestHarnessZ3ZdoSendEventControl; \
+  extern EmberEventControl emberAfPluginTestHarnessZ3ZllStuffEventControl; \
   extern EmberEventControl emberAfPluginZllCommissioningNetworkEventControl; \
   extern EmberEventControl emberAfPluginZllCommissioningTouchLinkEventControl; \
   extern void emberAfPluginConcentratorUpdateEventHandler(void); \
@@ -147,6 +152,11 @@ PGM EmberAfGenericClusterFunction emberAfFuncArrayIdentifyClusterServer[] = { (E
   extern void emberAfPluginInterpanFragmentTransmitEventHandler(void); \
   extern void emberAfPluginNetworkSteeringFinishSteeringEventHandler(void); \
   extern void emberAfPluginScanDispatchScanEventHandler(void); \
+  extern void emberAfPluginTestHarnessZ3BeaconSendEventHandler(void); \
+  extern void emberAfPluginTestHarnessZ3OpenNetworkEventHandler(void); \
+  extern void emberAfPluginTestHarnessZ3ResetKeyEventHandler(void); \
+  extern void emberAfPluginTestHarnessZ3ZdoSendEventHandler(void); \
+  extern void emberAfPluginTestHarnessZ3ZllStuffEventHandler(void); \
   extern void emberAfPluginZllCommissioningNetworkEventHandler(void); \
   extern void emberAfPluginZllCommissioningTouchLinkEventHandler(void); \
   extern EmberEventControl commissioningEventControl; \
@@ -181,6 +191,11 @@ PGM EmberAfGenericClusterFunction emberAfFuncArrayIdentifyClusterServer[] = { (E
   { &emberAfPluginInterpanFragmentTransmitEventControl, emberAfPluginInterpanFragmentTransmitEventHandler }, \
   { &emberAfPluginNetworkSteeringFinishSteeringEventControl, emberAfPluginNetworkSteeringFinishSteeringEventHandler }, \
   { &emberAfPluginScanDispatchScanEventControl, emberAfPluginScanDispatchScanEventHandler }, \
+  { &emberAfPluginTestHarnessZ3BeaconSendEventControl, emberAfPluginTestHarnessZ3BeaconSendEventHandler }, \
+  { &emberAfPluginTestHarnessZ3OpenNetworkEventControl, emberAfPluginTestHarnessZ3OpenNetworkEventHandler }, \
+  { &emberAfPluginTestHarnessZ3ResetKeyEventControl, emberAfPluginTestHarnessZ3ResetKeyEventHandler }, \
+  { &emberAfPluginTestHarnessZ3ZdoSendEventControl, emberAfPluginTestHarnessZ3ZdoSendEventHandler }, \
+  { &emberAfPluginTestHarnessZ3ZllStuffEventControl, emberAfPluginTestHarnessZ3ZllStuffEventHandler }, \
   { &emberAfPluginZllCommissioningNetworkEventControl, emberAfPluginZllCommissioningNetworkEventHandler }, \
   { &emberAfPluginZllCommissioningTouchLinkEventControl, emberAfPluginZllCommissioningTouchLinkEventHandler }, \
   { &emberAfPluginZllIdentifyServerTriggerEffectEndpointEventControls[0], emberAfPluginZllIdentifyServerTriggerEffectEndpointEventWrapper1 }, \
@@ -202,6 +217,11 @@ PGM EmberAfGenericClusterFunction emberAfFuncArrayIdentifyClusterServer[] = { (E
   "Scan Dispatch Plugin Scan",  \
   "ZLL Commissioning Plugin Network",  \
   "ZLL Commissioning Plugin TouchLink",  \
+  "ZigBee 3.0 Test Harness Plugin BeaconSend",  \
+  "ZigBee 3.0 Test Harness Plugin OpenNetwork",  \
+  "ZigBee 3.0 Test Harness Plugin ResetKey",  \
+  "ZigBee 3.0 Test Harness Plugin ZdoSend",  \
+  "ZigBee 3.0 Test Harness Plugin ZllStuff",  \
   "ZLL Identify Server Plugin TriggerEffect EP 1", \
   "ZLL Identify Server Plugin TriggerEffect EP 2", \
   "commissioning Custom",  \
@@ -251,12 +271,14 @@ PGM EmberAfGenericClusterFunction emberAfFuncArrayIdentifyClusterServer[] = { (E
   void emberAfPluginConcentratorStackStatusCallback(EmberStatus status); \
   void emberAfPluginNetworkSteeringStackStatusCallback(EmberStatus status); \
   void emberAfPluginZllCommissioningStackStatusCallback(EmberStatus status); \
+  void emberAfPluginTestHarnessZ3StackStatusCallback(EmberStatus status); \
 
 
 #define EMBER_AF_GENERATED_PLUGIN_STACK_STATUS_FUNCTION_CALLS \
   emberAfPluginConcentratorStackStatusCallback(status); \
   emberAfPluginNetworkSteeringStackStatusCallback(status); \
   emberAfPluginZllCommissioningStackStatusCallback(status); \
+  emberAfPluginTestHarnessZ3StackStatusCallback(status); \
 
 
 #define EMBER_AF_GENERATED_PLUGIN_MESSAGE_SENT_FUNCTION_DECLARATIONS \

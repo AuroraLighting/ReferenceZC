@@ -27,6 +27,60 @@ void emAfInterpanEnableCommand(void);
 void emAfInterpanFragmentTestCommand(void);
 void emAfInterpanSetMessageTimeoutCommand(void);
 void emAfPluginIdentifyCliPrint(void);
+void emAfPluginTestHarnessSetNetworkCreatorPanId(void);
+void emAfPluginTestHarnessZ3ApsApsRemoveDevice(void);
+void emAfPluginTestHarnessZ3ApsApsRemoveDeviceConfig(void);
+void emAfPluginTestHarnessZ3ApsApsRequestKeyCommand(void);
+void emAfPluginTestHarnessZ3BeaconBeaconReqCommand(void);
+void emAfPluginTestHarnessZ3BeaconBeaconsConfigCommand(void);
+void emAfPluginTestHarnessZ3InstallCodeClearOrSetCommand(void);
+void emAfPluginTestHarnessZ3LegacyProfileCommand(void);
+void emAfPluginTestHarnessZ3MgmtLeaveCommand(void);
+void emAfPluginTestHarnessZ3MgmtNwkUpdateRequestCommand(void);
+void emAfPluginTestHarnessZ3MgmtPermitJoiningReqCommand(void);
+void emAfPluginTestHarnessZ3NwkGetNetworkUpdateId(void);
+void emAfPluginTestHarnessZ3NwkNwkKeySupression(void);
+void emAfPluginTestHarnessZ3NwkNwkLeaveCommand(void);
+void emAfPluginTestHarnessZ3NwkNwkLeaveSupression(void);
+void emAfPluginTestHarnessZ3NwkNwkRejoinRequestCommand(void);
+void emAfPluginTestHarnessZ3NwkNwkRejoinResponseCommand(void);
+void emAfPluginTestHarnessZ3NwkSetNetworkUpdateId(void);
+void emAfPluginTestHarnessZ3OtaServerActivateCommand(void);
+void emAfPluginTestHarnessZ3OtaServerDeActivateCommand(void);
+void emAfPluginTestHarnessZ3PlatformCommand(void);
+void emAfPluginTestHarnessZ3PrintingCommand(void);
+void emAfPluginTestHarnessZ3ResetCommand(void);
+void emAfPluginTestHarnessZ3SetDeviceModeCommand(void);
+void emAfPluginTestHarnessZ3SetShortAddressCommand(void);
+void emAfPluginTestHarnessZ3TouchlinkDeviceInformationRequestCommand(void);
+void emAfPluginTestHarnessZ3TouchlinkDeviceInformationRequestWTargetCommand(void);
+void emAfPluginTestHarnessZ3TouchlinkDeviceInformationResponseConfigCommand(void);
+void emAfPluginTestHarnessZ3TouchlinkGetEndpointListRequestCommand(void);
+void emAfPluginTestHarnessZ3TouchlinkGetGroupIdentifiersRequestCommand(void);
+void emAfPluginTestHarnessZ3TouchlinkIdentifyRequestCommand(void);
+void emAfPluginTestHarnessZ3TouchlinkIsScanningCommand(void);
+void emAfPluginTestHarnessZ3TouchlinkNetworkCommand(void);
+void emAfPluginTestHarnessZ3TouchlinkNetworkJoinRouterResponseConfig(void);
+void emAfPluginTestHarnessZ3TouchlinkNetworkStartResponseConfig(void);
+void emAfPluginTestHarnessZ3TouchlinkNetworkUpdateRequestCommand(void);
+void emAfPluginTestHarnessZ3TouchlinkRTFNRequestCommand(void);
+void emAfPluginTestHarnessZ3TouchlinkScanRequestProcessCommand(void);
+void emAfPluginTestHarnessZ3TouchlinkScanResponseConfigCommand(void);
+void emAfPluginTestHarnessZ3TouchlinkStartAsRouterCommand(void);
+void emAfPluginTestHarnessZ3ZclReadCommand(void);
+void emAfPluginTestHarnessZ3ZdoActiveEndpointRequestCommand(void);
+void emAfPluginTestHarnessZ3ZdoBcDeviceAnnounceCommand(void);
+void emAfPluginTestHarnessZ3ZdoBindGroupCommand(void);
+void emAfPluginTestHarnessZ3ZdoIeeeAddrReqCommand(void);
+void emAfPluginTestHarnessZ3ZdoIeeeAddrRspConfigCommand(void);
+void emAfPluginTestHarnessZ3ZdoMatchDescReqCommand(void);
+void emAfPluginTestHarnessZ3ZdoMatchDescRspConfigCommand(void);
+void emAfPluginTestHarnessZ3ZdoNodeDescReqCommand(void);
+void emAfPluginTestHarnessZ3ZdoNwkAddrReqCommand(void);
+void emAfPluginTestHarnessZ3ZdoSimpleDescReqCommand(void);
+void emAfPluginTestHarnessZ3ZdoSimpleDescRspConfigCommand(void);
+void emAfPluginTestHarnessZ3ZdoZdoNodeDescRspConfigCommand(void);
+void emAfPluginTestHarnessZ3ZdoZdoResetCommand(void);
 void emberAfPluginConcentratorAggregationCommand(void);
 void emberAfPluginConcentratorPrintHostSourceRouteTable(void);
 void emberAfPluginConcentratorPrintSourceRouteTable(void);
@@ -1403,6 +1457,685 @@ static EmberCommandEntry emberCommandTablePluginZllCommissioningCommands[] = {
 };
 
 #if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoUnbindGroupCommandArguments[] = {
+  "Target node ID",
+  "The source EUI64 of the binding (the remote device's EUI64)",
+  "The source endpoint of the binding.",
+  "The cluster ID to unbind.",
+  "The group address in the binding",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoUnbindUnicastCommandArguments[] = {
+  "Target node ID",
+  "The source EUI64 of the binding (the remote device's EUI64)",
+  "The source endpoint of the binding.",
+  "The cluster ID to unbind.",
+  "The destination EUI64 in the binding (usually the local node's EUI64",
+  "The destination endpoint of the binding",
+  NULL
+};
+#endif
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3ZdoUnbindCommands[] = {
+  emberCommandEntryActionWithDetails("group", zdoUnbindGroupCommand, "vbuvv", "Sends an unbind request for a multicast binding to the target device.", emberCommandTablePluginTestHarnessZ3ZdoUnbindGroupCommandArguments),
+  emberCommandEntryActionWithDetails("unicast", zdoUnbindUnicastCommand, "vbuvbu", "Sends an unbind request for a unicast binding to the target device.", emberCommandTablePluginTestHarnessZ3ZdoUnbindUnicastCommandArguments),
+  emberCommandEntryTerminator()
+};
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoOutClListAddCommandArguments[] = {
+  "Client cluster ids",
+  NULL
+};
+#endif
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3ZdoOutClListCommands[] = {
+  emberCommandEntryActionWithDetails("add", zdoAddClusterCommand, "v", "Add clusters to the known client (out) clusters on this device.", emberCommandTablePluginTestHarnessZ3ZdoOutClListAddCommandArguments),
+  emberCommandEntryActionWithDetails("clear", zdoClearClusterCommand, "", "Clear the ZDO list of client (out) clusters.", NULL),
+  emberCommandEntryTerminator()
+};
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoInClListAddCommandArguments[] = {
+  "Server cluster id",
+  NULL
+};
+#endif
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3ZdoInClListCommands[] = {
+  emberCommandEntryActionWithDetails("add", zdoAddClusterCommand, "v", "Add clusters to the known server (in) clusters on this device.", emberCommandTablePluginTestHarnessZ3ZdoInClListAddCommandArguments),
+  emberCommandEntryActionWithDetails("clear", zdoClearClusterCommand, "", "Clear the ZDO list of server (in) clusters.", NULL),
+  emberCommandEntryTerminator()
+};
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoActiveEndpointRequestCommandArguments[] = {
+  "The destination address of the command.",
+  "The network address of interest.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoBcDeviceAnnounceCommandArguments[] = {
+  "Short address of the fake device announce",
+  "IEEE address of the fake device announce",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoBindCommandArguments[] = {
+  "Two byte destination node id",
+  "Remote device's source endpoint to bind",
+  "Remote endpoint to bind",
+  "Cluster on which to bind",
+  "Remote node EUI64",
+  "Binding's dest EUI64.  Usually the local node's EUI64",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoBindGroupCommandArguments[] = {
+  "The destination of the ZDO command",
+  "Remote device's source endpoint to bind",
+  "Remote endpoint to bind",
+  "Two byte destination address for the binding",
+  "Cluster on which to bind",
+  "The source IEEE address for the binding",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoIeeeAddrReqCommandArguments[] = {
+  "The short address of interest",
+  "The request type.",
+  "The start index for the requested elements of the associated devices l ...",
+  "The destination address of the command.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoLeaveCommandArguments[] = {
+  "Target node ID",
+  "Remove children",
+  "Rejoin after leave",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoMatchDescReqCommandArguments[] = {
+  "The destination address of the command.",
+  "The network address of interest.",
+  "The profile id in the APS header of the command.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoMatchDescRspConfigCommandArguments[] = {
+  "The network address of interest.",
+  "The status for the response command.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoMgmtBindCommandArguments[] = {
+  "Target node ID",
+  "Starting index into table query",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoMgmtLqiCommandArguments[] = {
+  "Target node ID",
+  "Starting index into table query",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoNodeCommandArguments[] = {
+  "Two byte address for the target device.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoNodeDescReqCommandArguments[] = {
+  "The destination address of the command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoNwkAddrReqCommandArguments[] = {
+  "The long address of the destination.",
+  "The type of the rejoin request.",
+  "The start index for the requested elements of the associated devices l ...",
+  "The destination address of the command.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoPowerCommandArguments[] = {
+  "Target node ID",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoRouteCommandArguments[] = {
+  "Target node ID",
+  "The index of the remote node's routing table to request.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoSimpleDescReqCommandArguments[] = {
+  "The destination address of the command.",
+  "The endpoint for the simple descriptor request.",
+  "The network address of interest.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoSimpleDescRspConfigCommandArguments[] = {
+  "The network address of interest.",
+  "The status for the response command.",
+  "The trimmed length of the command.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZdoZdoNodeDescRspConfigCommandArguments[] = {
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3ZdoCommands[] = {
+  emberCommandEntryActionWithDetails("active-endpoint-request", emAfPluginTestHarnessZ3ZdoActiveEndpointRequestCommand, "vvw", "Unicast an active endpoint request.", emberCommandTablePluginTestHarnessZ3ZdoActiveEndpointRequestCommandArguments),
+  emberCommandEntryActionWithDetails("bc-device-announce", emAfPluginTestHarnessZ3ZdoBcDeviceAnnounceCommand, "vb", "Rebroadcast a \"fake\" ZDO device announc ...", emberCommandTablePluginTestHarnessZ3ZdoBcDeviceAnnounceCommandArguments),
+  emberCommandEntryActionWithDetails("bind", zdoBindCommand, "vuuvbb", "Send a ZDO Bind command to a device specified in the command arguments ...", emberCommandTablePluginTestHarnessZ3ZdoBindCommandArguments),
+  emberCommandEntryActionWithDetails("bind-group", emAfPluginTestHarnessZ3ZdoBindGroupCommand, "vuuvvb", "Send a ZDO bind command to a device specified to create a groupcast bi ...", emberCommandTablePluginTestHarnessZ3ZdoBindGroupCommandArguments),
+  emberCommandEntryActionWithDetails("ieee-addr-req", emAfPluginTestHarnessZ3ZdoIeeeAddrReqCommand, "vuuvw", "Send an IEEE address request.", emberCommandTablePluginTestHarnessZ3ZdoIeeeAddrReqCommandArguments),
+  emberCommandEntrySubMenu("in-cl-list", emberCommandTablePluginTestHarnessZ3ZdoInClListCommands, ""),
+  emberCommandEntryActionWithDetails("leave", zdoLeaveRequestCommand, "vuu", "Send a ZDO Management Leave command to the target device.", emberCommandTablePluginTestHarnessZ3ZdoLeaveCommandArguments),
+  emberCommandEntryActionWithDetails("match-desc-req", emAfPluginTestHarnessZ3ZdoMatchDescReqCommand, "vvvw", "Unicast a match descriptor request.", emberCommandTablePluginTestHarnessZ3ZdoMatchDescReqCommandArguments),
+  emberCommandEntryActionWithDetails("match-desc-rsp-config", emAfPluginTestHarnessZ3ZdoMatchDescRspConfigCommand, "vuw", "Configure the next outgoing match descriptor response.", emberCommandTablePluginTestHarnessZ3ZdoMatchDescRspConfigCommandArguments),
+  emberCommandEntryActionWithDetails("mgmt-bind", zdoMgmtBindCommand, "vu", "Send a ZDO MGMT-Bind (Binding Table) Request to the target device.", emberCommandTablePluginTestHarnessZ3ZdoMgmtBindCommandArguments),
+  emberCommandEntryActionWithDetails("mgmt-lqi", zdoMgmtLqiCommand, "vu", "Send a ZDO MGMT-LQI (LQI Table) Request to the target device.", emberCommandTablePluginTestHarnessZ3ZdoMgmtLqiCommandArguments),
+  emberCommandEntryActionWithDetails("node", zdoNodeCommand, "v", "Sends a node descriptor request to a given target device", emberCommandTablePluginTestHarnessZ3ZdoNodeCommandArguments),
+  emberCommandEntryActionWithDetails("node-desc-req", emAfPluginTestHarnessZ3ZdoNodeDescReqCommand, "v", "Unicast a node descriptor request.", emberCommandTablePluginTestHarnessZ3ZdoNodeDescReqCommandArguments),
+  emberCommandEntryActionWithDetails("nwk-addr-req", emAfPluginTestHarnessZ3ZdoNwkAddrReqCommand, "buuvw", "Send a ZDO address request.", emberCommandTablePluginTestHarnessZ3ZdoNwkAddrReqCommandArguments),
+  emberCommandEntrySubMenu("out-cl-list", emberCommandTablePluginTestHarnessZ3ZdoOutClListCommands, ""),
+  emberCommandEntryActionWithDetails("power", zdoPowerDescriptorRequestCommand, "v", "Send a ZDO Power Descriptor Request to the target device.", emberCommandTablePluginTestHarnessZ3ZdoPowerCommandArguments),
+  emberCommandEntryActionWithDetails("route", zdoRouteRequestCommand, "vu", "Send a ZDO route request command to the target.", emberCommandTablePluginTestHarnessZ3ZdoRouteCommandArguments),
+  emberCommandEntryActionWithDetails("simple-desc-req", emAfPluginTestHarnessZ3ZdoSimpleDescReqCommand, "vuvw", "Unicast a simple descriptor request.", emberCommandTablePluginTestHarnessZ3ZdoSimpleDescReqCommandArguments),
+  emberCommandEntryActionWithDetails("simple-desc-rsp-config", emAfPluginTestHarnessZ3ZdoSimpleDescRspConfigCommand, "vuuw", "Configure the next outgoing simple descriptor response.", emberCommandTablePluginTestHarnessZ3ZdoSimpleDescRspConfigCommandArguments),
+  emberCommandEntrySubMenu("unbind", emberCommandTablePluginTestHarnessZ3ZdoUnbindCommands, ""),
+  emberCommandEntryActionWithDetails("zdo-node-desc-rsp-config", emAfPluginTestHarnessZ3ZdoZdoNodeDescRspConfigCommand, "w", "Configure the next outgoing node descriptor response.", emberCommandTablePluginTestHarnessZ3ZdoZdoNodeDescRspConfigCommandArguments),
+  emberCommandEntryActionWithDetails("zdo-reset", emAfPluginTestHarnessZ3ZdoZdoResetCommand, "", "Reset any pending negative ZDO behavior.", NULL),
+  emberCommandEntryTerminator()
+};
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ZclReadCommandArguments[] = {
+  "The cluster ID in the command.",
+  "The attribute ID in the command.",
+  "The destination of the command.",
+  "The source endpoint of the command.",
+  "The destination endpoint of the command.",
+  "The profile ID in the command.",
+  NULL
+};
+#endif
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3ZclCommands[] = {
+  emberCommandEntryActionWithDetails("read", emAfPluginTestHarnessZ3ZclReadCommand, "vvvuuv", "Send a ZCL ReadAttribute command.", emberCommandTablePluginTestHarnessZ3ZclReadCommandArguments),
+  emberCommandEntryTerminator()
+};
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkDeviceInformationRequestCommandArguments[] = {
+  "The start index in the device information request command",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkDeviceInformationRequestWTargetCommandArguments[] = {
+  "The start index in the device information request command",
+  "The short address of the target",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkDeviceInformationResponseConfigCommandArguments[] = {
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkGetEndpointListRequestCommandArguments[] = {
+  "The start index in the command payload.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkGetGroupIdentifiersRequestCommandArguments[] = {
+  "The start index in the command payload.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkIdentifyRequestCommandArguments[] = {
+  "The duration length of the identify state.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkNetworkJoinEndDeviceRequestCommandArguments[] = {
+  "The designated node ID for the target node.",
+  "The free address range begin.",
+  "The free address range end.",
+  "The free group range begin.",
+  "The free group range end.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkNetworkJoinRouterRequestCommandArguments[] = {
+  "The designated node ID for the target node.",
+  "The free address range begin.",
+  "The free address range end.",
+  "The free group range begin.",
+  "The free group range end.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkNetworkJoinRouterResponseConfigCommandArguments[] = {
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkNetworkStartRequestCommandArguments[] = {
+  "The designated node ID for the target node.",
+  "The free address range begin.",
+  "The free address range end.",
+  "The free group range begin.",
+  "The free group range end.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkNetworkStartResponseConfigCommandArguments[] = {
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkNetworkUpdateRequestCommandArguments[] = {
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkResetToFactoryNewRequestCommandArguments[] = {
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkScanRequestProcessCommandArguments[] = {
+  "The link initiator bit in scan requests.",
+  "This argument is unsed.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkScanResponseConfigCommandArguments[] = {
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3TouchlinkStartAsRouterCommandArguments[] = {
+  "The PAN ID that will be used.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3TouchlinkCommands[] = {
+  emberCommandEntryActionWithDetails("device-information-request", emAfPluginTestHarnessZ3TouchlinkDeviceInformationRequestCommand, "uw", "Send an device information request to the target found in the scan req ...", emberCommandTablePluginTestHarnessZ3TouchlinkDeviceInformationRequestCommandArguments),
+  emberCommandEntryActionWithDetails("device-information-request-w-target", emAfPluginTestHarnessZ3TouchlinkDeviceInformationRequestWTargetCommand, "uvw", "Send an device information request to the target specefied with the sh ...", emberCommandTablePluginTestHarnessZ3TouchlinkDeviceInformationRequestWTargetCommandArguments),
+  emberCommandEntryActionWithDetails("device-information-response-config", emAfPluginTestHarnessZ3TouchlinkDeviceInformationResponseConfigCommand, "w", "Configure the next device information response.", emberCommandTablePluginTestHarnessZ3TouchlinkDeviceInformationResponseConfigCommandArguments),
+  emberCommandEntryActionWithDetails("get-endpoint-list-request", emAfPluginTestHarnessZ3TouchlinkGetEndpointListRequestCommand, "u", "Send a get endpoint list request.", emberCommandTablePluginTestHarnessZ3TouchlinkGetEndpointListRequestCommandArguments),
+  emberCommandEntryActionWithDetails("get-group-identifiers-request", emAfPluginTestHarnessZ3TouchlinkGetGroupIdentifiersRequestCommand, "u", "Send a get group identifiers request.", emberCommandTablePluginTestHarnessZ3TouchlinkGetGroupIdentifiersRequestCommandArguments),
+  emberCommandEntryActionWithDetails("identify-request", emAfPluginTestHarnessZ3TouchlinkIdentifyRequestCommand, "vw", "Send an identify request to the target found in the scan request proce ...", emberCommandTablePluginTestHarnessZ3TouchlinkIdentifyRequestCommandArguments),
+  emberCommandEntryActionWithDetails("is-scanning", emAfPluginTestHarnessZ3TouchlinkIsScanningCommand, "", "Print out whether or not the device is currently performing the scan p ...", NULL),
+  emberCommandEntryActionWithDetails("network-join-end-device-request", emAfPluginTestHarnessZ3TouchlinkNetworkCommand, "vvvvvw", "Send a network end device join request to the target found in the scan ...", emberCommandTablePluginTestHarnessZ3TouchlinkNetworkJoinEndDeviceRequestCommandArguments),
+  emberCommandEntryActionWithDetails("network-join-router-request", emAfPluginTestHarnessZ3TouchlinkNetworkCommand, "vvvvvw", "Send a network router join request to the target found in the scan req ...", emberCommandTablePluginTestHarnessZ3TouchlinkNetworkJoinRouterRequestCommandArguments),
+  emberCommandEntryActionWithDetails("network-join-router-response-config", emAfPluginTestHarnessZ3TouchlinkNetworkJoinRouterResponseConfig, "w", "Configure the next outgoing network join router response command.", emberCommandTablePluginTestHarnessZ3TouchlinkNetworkJoinRouterResponseConfigCommandArguments),
+  emberCommandEntryActionWithDetails("network-start-request", emAfPluginTestHarnessZ3TouchlinkNetworkCommand, "vvvvvw", "Send a network start request to the target found in the scan request p ...", emberCommandTablePluginTestHarnessZ3TouchlinkNetworkStartRequestCommandArguments),
+  emberCommandEntryActionWithDetails("network-start-response-config", emAfPluginTestHarnessZ3TouchlinkNetworkStartResponseConfig, "w", "Configure the next outgoing network start response command.", emberCommandTablePluginTestHarnessZ3TouchlinkNetworkStartResponseConfigCommandArguments),
+  emberCommandEntryActionWithDetails("network-update-request", emAfPluginTestHarnessZ3TouchlinkNetworkUpdateRequestCommand, "w", "Send a network update request.", emberCommandTablePluginTestHarnessZ3TouchlinkNetworkUpdateRequestCommandArguments),
+  emberCommandEntryActionWithDetails("reset-to-factory-new-request", emAfPluginTestHarnessZ3TouchlinkRTFNRequestCommand, "w", "Send a reset to factory new request to the target found in the scan re ...", emberCommandTablePluginTestHarnessZ3TouchlinkResetToFactoryNewRequestCommandArguments),
+  emberCommandEntryActionWithDetails("scan-request-process", emAfPluginTestHarnessZ3TouchlinkScanRequestProcessCommand, "uvw", "Start the scan request process.", emberCommandTablePluginTestHarnessZ3TouchlinkScanRequestProcessCommandArguments),
+  emberCommandEntryActionWithDetails("scan-response-config", emAfPluginTestHarnessZ3TouchlinkScanResponseConfigCommand, "w", "Configure the next scan response.", emberCommandTablePluginTestHarnessZ3TouchlinkScanResponseConfigCommandArguments),
+  emberCommandEntryActionWithDetails("start-as-router", emAfPluginTestHarnessZ3TouchlinkStartAsRouterCommand, "vw", "Start a distributed network on which to perform ZLL operations.", emberCommandTablePluginTestHarnessZ3TouchlinkStartAsRouterCommandArguments),
+  emberCommandEntryTerminator()
+};
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3OtaServerActivateCommandArguments[] = {
+  "Short Address ",
+  "Destination Endpoint ",
+  "Manufacturer Code.",
+  "Image Type.",
+  "File Version",
+  "File Size",
+  NULL
+};
+#endif
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3OtaServerCommands[] = {
+  emberCommandEntryActionWithDetails("activate", emAfPluginTestHarnessZ3OtaServerActivateCommand, "vuvvww", "Configuration command to set up OTA server.", emberCommandTablePluginTestHarnessZ3OtaServerActivateCommandArguments),
+  emberCommandEntryActionWithDetails("deactivate", emAfPluginTestHarnessZ3OtaServerDeActivateCommand, "", "Configuration command to set up OTA server.", NULL),
+  emberCommandEntryTerminator()
+};
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3NwkNwkLeaveSupressionCommands[] = {
+  emberCommandEntryActionWithDetails("off", emAfPluginTestHarnessZ3NwkNwkLeaveSupression, "", "Do not supress network leave commands.", NULL),
+  emberCommandEntryActionWithDetails("on", emAfPluginTestHarnessZ3NwkNwkLeaveSupression, "", "Supress network leave commands.", NULL),
+  emberCommandEntryTerminator()
+};
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3NwkNwkKeySupressionCommands[] = {
+  emberCommandEntryActionWithDetails("off", emAfPluginTestHarnessZ3NwkNwkKeySupression, "", "Do not supress network leave commands.", NULL),
+  emberCommandEntryActionWithDetails("on", emAfPluginTestHarnessZ3NwkNwkKeySupression, "", "Supress network leave commands.", NULL),
+  emberCommandEntryTerminator()
+};
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3NwkIeeeAddrRspConfigCommands[] = {
+  emberCommandEntryActionWithDetails("issuer-nwk-address-remote-dev", emAfPluginTestHarnessZ3ZdoIeeeAddrRspConfigCommand, "", "Configure the next outgoing IEEE address request.", NULL),
+  emberCommandEntryActionWithDetails("reset", emAfPluginTestHarnessZ3ZdoIeeeAddrRspConfigCommand, "", "Configure the next outgoing IEEE address request.", NULL),
+  emberCommandEntryActionWithDetails("status-device-not-found", emAfPluginTestHarnessZ3ZdoIeeeAddrRspConfigCommand, "", "Configure the next outgoing IEEE address request.", NULL),
+  emberCommandEntryTerminator()
+};
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3NwkNwkLeaveCommandArguments[] = {
+  "Whether or not the device should rejoin.",
+  "Whether or not this command is a request.",
+  "Whether or not the leaving device should remove its children.",
+  "The destination address of the command.",
+  "The negative behavior options for this command. ",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3NwkNwkRejoinRequestCommandArguments[] = {
+  "The destination address of the command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3NwkNwkRejoinResponseCommandArguments[] = {
+  "The new short address of the destination node.",
+  "The status of the rejoin.",
+  "The destination address of the command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3NwkSetNetworkUpdateIdCommandArguments[] = {
+  "The new network update id. ",
+  NULL
+};
+#endif
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3NwkCommands[] = {
+  emberCommandEntryActionWithDetails("get-network-update-id", emAfPluginTestHarnessZ3NwkGetNetworkUpdateId, "", "Get the current network update id.", NULL),
+  emberCommandEntrySubMenu("ieee-addr-rsp-config", emberCommandTablePluginTestHarnessZ3NwkIeeeAddrRspConfigCommands, ""),
+  emberCommandEntrySubMenu("nwk-key-supression", emberCommandTablePluginTestHarnessZ3NwkNwkKeySupressionCommands, ""),
+  emberCommandEntryActionWithDetails("nwk-leave", emAfPluginTestHarnessZ3NwkNwkLeaveCommand, "uuuvw", "Send a Network Leave command.", emberCommandTablePluginTestHarnessZ3NwkNwkLeaveCommandArguments),
+  emberCommandEntrySubMenu("nwk-leave-supression", emberCommandTablePluginTestHarnessZ3NwkNwkLeaveSupressionCommands, ""),
+  emberCommandEntryActionWithDetails("nwk-rejoin-request", emAfPluginTestHarnessZ3NwkNwkRejoinRequestCommand, "v", "Send a Rejoin Request command.", emberCommandTablePluginTestHarnessZ3NwkNwkRejoinRequestCommandArguments),
+  emberCommandEntryActionWithDetails("nwk-rejoin-response", emAfPluginTestHarnessZ3NwkNwkRejoinResponseCommand, "vuv", "Send a Rejoin Response command.", emberCommandTablePluginTestHarnessZ3NwkNwkRejoinResponseCommandArguments),
+  emberCommandEntryActionWithDetails("set-network-update-id", emAfPluginTestHarnessZ3NwkSetNetworkUpdateId, "u", "Set the network update id in the current network parameters block.", emberCommandTablePluginTestHarnessZ3NwkSetNetworkUpdateIdCommandArguments),
+  emberCommandEntryTerminator()
+};
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3MgmtLeaveCommandArguments[] = {
+  "The destination address of the command.",
+  "Whether or not the leaving device should remove its children.",
+  "Whether or not the destination node should rejoin the network.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3MgmtNwkUpdateRequestCommandArguments[] = {
+  "The scan channel for the command.",
+  "The scan duration for the command.",
+  "The scan count for the command.",
+  "The scan destination.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3MgmtPermitJoiningReqCommandArguments[] = {
+  "The permit duration, in seconds.",
+  "The destination address of the command.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3MgmtCommands[] = {
+  emberCommandEntryActionWithDetails("leave", emAfPluginTestHarnessZ3MgmtLeaveCommand, "vuuw", "Unicast a permit joining command.", emberCommandTablePluginTestHarnessZ3MgmtLeaveCommandArguments),
+  emberCommandEntryActionWithDetails("nwk-update-request", emAfPluginTestHarnessZ3MgmtNwkUpdateRequestCommand, "vvuvw", "Unicast a network update command.", emberCommandTablePluginTestHarnessZ3MgmtNwkUpdateRequestCommandArguments),
+  emberCommandEntryActionWithDetails("permit-joining-req", emAfPluginTestHarnessZ3MgmtPermitJoiningReqCommand, "vvw", "Unicast a permit joining command.", emberCommandTablePluginTestHarnessZ3MgmtPermitJoiningReqCommandArguments),
+  emberCommandEntryTerminator()
+};
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3LegacyProfileCommands[] = {
+  emberCommandEntryActionWithDetails("disable", emAfPluginTestHarnessZ3LegacyProfileCommand, "", "Disable using the legacy profile of 0xC05E for ZLL commands.", NULL),
+  emberCommandEntryActionWithDetails("enable", emAfPluginTestHarnessZ3LegacyProfileCommand, "", "Enable using the legacy profile of 0xC05E for ZLL commands.", NULL),
+  emberCommandEntryTerminator()
+};
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3InstallCodeSetCommandArguments[] = {
+  "The install code for this device to use.",
+  NULL
+};
+#endif
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3InstallCodeCommands[] = {
+  emberCommandEntryActionWithDetails("clear", emAfPluginTestHarnessZ3InstallCodeClearOrSetCommand, "", "Clear the install code from the device.", NULL),
+  emberCommandEntryActionWithDetails("set", emAfPluginTestHarnessZ3InstallCodeClearOrSetCommand, "b", "Clear the install code from the device.", emberCommandTablePluginTestHarnessZ3InstallCodeSetCommandArguments),
+  emberCommandEntryTerminator()
+};
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3BeaconBeaconsConfigCommandArguments[] = {
+  "The negative behavior options for this command. ",
+  NULL
+};
+#endif
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3BeaconCommands[] = {
+  emberCommandEntryActionWithDetails("beacon-req", emAfPluginTestHarnessZ3BeaconBeaconReqCommand, "", "Send a beacon request.", NULL),
+  emberCommandEntryActionWithDetails("beacons-config", emAfPluginTestHarnessZ3BeaconBeaconsConfigCommand, "w", "Send a beacon.", emberCommandTablePluginTestHarnessZ3BeaconBeaconsConfigCommandArguments),
+  emberCommandEntryTerminator()
+};
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ApsApsRemoveDeviceCommandArguments[] = {
+  "The long address of the parent whose child will be removed.",
+  "The long address of the node which will be removed.",
+  "The negative behavior options for this command. ",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ApsApsRemoveDeviceConfigCommandArguments[] = {
+  "The negative behavior options for this command. ",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3ApsApsRequestKeyCommandArguments[] = {
+  "The short address destination of the command.",
+  "The key type in the command payload.",
+  "The partner address for the requested link key.",
+  "The negative behavior options for this command.",
+  NULL
+};
+#endif
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3ApsCommands[] = {
+  emberCommandEntryActionWithDetails("aps-remove-device", emAfPluginTestHarnessZ3ApsApsRemoveDevice, "bbw", "Send an APS remove device command.", emberCommandTablePluginTestHarnessZ3ApsApsRemoveDeviceCommandArguments),
+  emberCommandEntryActionWithDetails("aps-remove-device-config", emAfPluginTestHarnessZ3ApsApsRemoveDeviceConfig, "w", "Configures the APS remove device command handling.", emberCommandTablePluginTestHarnessZ3ApsApsRemoveDeviceConfigCommandArguments),
+  emberCommandEntryActionWithDetails("aps-request-key", emAfPluginTestHarnessZ3ApsApsRequestKeyCommand, "vubw", "Send an APS request key command.", emberCommandTablePluginTestHarnessZ3ApsApsRequestKeyCommandArguments),
+  emberCommandEntryTerminator()
+};
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3SetDeviceModeCommandArguments[] = {
+  "The device mode.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3SetPanIdCommandArguments[] = {
+  "The PAN ID for the Network Creator plugin to use.",
+  NULL
+};
+#endif
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
+static PGM_P PGM emberCommandTablePluginTestHarnessZ3SetShortAddressCommandArguments[] = {
+  "The node ID to use as this device's short ID.",
+  NULL
+};
+#endif
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessZ3Commands[] = {
+  emberCommandEntrySubMenu("aps", emberCommandTablePluginTestHarnessZ3ApsCommands, ""),
+  emberCommandEntrySubMenu("beacon", emberCommandTablePluginTestHarnessZ3BeaconCommands, ""),
+  emberCommandEntrySubMenu("install-code", emberCommandTablePluginTestHarnessZ3InstallCodeCommands, ""),
+  emberCommandEntrySubMenu("legacy-profile", emberCommandTablePluginTestHarnessZ3LegacyProfileCommands, ""),
+  emberCommandEntrySubMenu("mgmt", emberCommandTablePluginTestHarnessZ3MgmtCommands, ""),
+  emberCommandEntrySubMenu("nwk", emberCommandTablePluginTestHarnessZ3NwkCommands, ""),
+  emberCommandEntrySubMenu("ota-server", emberCommandTablePluginTestHarnessZ3OtaServerCommands, ""),
+  emberCommandEntryActionWithDetails("platform", emAfPluginTestHarnessZ3PlatformCommand, "", "Print the platform information for this device.", NULL),
+  emberCommandEntryActionWithDetails("reset", emAfPluginTestHarnessZ3ResetCommand, "", "Resets the device to a factory new state (empty tables, attributes at  ...", NULL),
+  emberCommandEntryActionWithDetails("set-device-mode", emAfPluginTestHarnessZ3SetDeviceModeCommand, "u", "Set the node ID to be used on the device.", emberCommandTablePluginTestHarnessZ3SetDeviceModeCommandArguments),
+  emberCommandEntryActionWithDetails("set-pan-id", emAfPluginTestHarnessSetNetworkCreatorPanId, "v", "Set the PAN ID to be used by the Network Creator plugin.", emberCommandTablePluginTestHarnessZ3SetPanIdCommandArguments),
+  emberCommandEntryActionWithDetails("set-short-address", emAfPluginTestHarnessZ3SetShortAddressCommand, "v", "Set the node ID to be used on the device.", emberCommandTablePluginTestHarnessZ3SetShortAddressCommandArguments),
+  emberCommandEntrySubMenu("touchlink", emberCommandTablePluginTestHarnessZ3TouchlinkCommands, ""),
+  emberCommandEntrySubMenu("zcl", emberCommandTablePluginTestHarnessZ3ZclCommands, ""),
+  emberCommandEntrySubMenu("zdo", emberCommandTablePluginTestHarnessZ3ZdoCommands, ""),
+  emberCommandEntryTerminator()
+};
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessPacketPrintingZdoPrintingCommands[] = {
+  emberCommandEntryActionWithDetails("disable", emAfPluginTestHarnessZ3PrintingCommand, "", "Disable the printing of ZDO commands.", NULL),
+  emberCommandEntryActionWithDetails("enable", emAfPluginTestHarnessZ3PrintingCommand, "", "Enable the printing of ZDO commands.", NULL),
+  emberCommandEntryTerminator()
+};
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessPacketPrintingNwkPrintingCommands[] = {
+  emberCommandEntryActionWithDetails("disable", emAfPluginTestHarnessZ3PrintingCommand, "", "Disable the printing of network commands.", NULL),
+  emberCommandEntryActionWithDetails("enable", emAfPluginTestHarnessZ3PrintingCommand, "", "Enable the printing of network commands.", NULL),
+  emberCommandEntryTerminator()
+};
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessPacketPrintingBeaconPrintingCommands[] = {
+  emberCommandEntryActionWithDetails("disable", emAfPluginTestHarnessZ3PrintingCommand, "", "Disable the printing of beacon requests and received beacons.", NULL),
+  emberCommandEntryActionWithDetails("enable", emAfPluginTestHarnessZ3PrintingCommand, "", "Enable the printing of beacon requests and received beacons.", NULL),
+  emberCommandEntryTerminator()
+};
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessPacketPrintingApsPrintingCommands[] = {
+  emberCommandEntryActionWithDetails("disable", emAfPluginTestHarnessZ3PrintingCommand, "", "Disable the printing of APS commands.", NULL),
+  emberCommandEntryActionWithDetails("enable", emAfPluginTestHarnessZ3PrintingCommand, "", "Enable the printing of APS commands.", NULL),
+  emberCommandEntryTerminator()
+};
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessPacketPrintingCommands[] = {
+  emberCommandEntrySubMenu("aps-printing", emberCommandTablePluginTestHarnessPacketPrintingApsPrintingCommands, ""),
+  emberCommandEntrySubMenu("beacon-printing", emberCommandTablePluginTestHarnessPacketPrintingBeaconPrintingCommands, ""),
+  emberCommandEntrySubMenu("nwk-printing", emberCommandTablePluginTestHarnessPacketPrintingNwkPrintingCommands, ""),
+  emberCommandEntrySubMenu("zdo-printing", emberCommandTablePluginTestHarnessPacketPrintingZdoPrintingCommands, ""),
+  emberCommandEntryTerminator()
+};
+
+static EmberCommandEntry emberCommandTablePluginTestHarnessCommands[] = {
+  emberCommandEntrySubMenu("packet-printing", emberCommandTablePluginTestHarnessPacketPrintingCommands, ""),
+  emberCommandEntrySubMenu("z3", emberCommandTablePluginTestHarnessZ3Commands, ""),
+  emberCommandEntryTerminator()
+};
+
+#if defined(EMBER_COMMAND_INTEPRETER_HAS_DESCRIPTION_FIELD)
 static PGM_P PGM emberCommandTablePluginNetworkSteeringMaskAddCommandArguments[] = {
   "The channel mask to add a channel to.",
   "The channel to add to the mask.",
@@ -1584,6 +2317,7 @@ static EmberCommandEntry emberCommandTablePluginCommands[] = {
   emberCommandEntrySubMenu("idle-sleep", emberCommandTablePluginIdleSleepCommands, ""),
   emberCommandEntrySubMenu("interpan", emberCommandTablePluginInterpanCommands, ""),
   emberCommandEntrySubMenu("network-steering", emberCommandTablePluginNetworkSteeringCommands, ""),
+  emberCommandEntrySubMenu("test-harness", emberCommandTablePluginTestHarnessCommands, ""),
   emberCommandEntrySubMenu("zll-commissioning", emberCommandTablePluginZllCommissioningCommands, ""),
   emberCommandEntryTerminator()
 };

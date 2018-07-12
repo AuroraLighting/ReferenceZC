@@ -821,7 +821,7 @@ appPlugin:temperature-si7053-stub,false
 
 appPlugin:test-harness,false
 
-appPlugin:test-harness-z3,false
+appPlugin:test-harness-z3,true
 
 appPlugin:throughput,false
 
