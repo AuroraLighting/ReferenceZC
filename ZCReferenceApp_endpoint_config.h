@@ -270,15 +270,15 @@ PGM EmberAfGenericClusterFunction emberAfFuncArrayIdentifyClusterServer[] = { (E
 #define EMBER_AF_GENERATED_PLUGIN_STACK_STATUS_FUNCTION_DECLARATIONS \
   void emberAfPluginConcentratorStackStatusCallback(EmberStatus status); \
   void emberAfPluginNetworkSteeringStackStatusCallback(EmberStatus status); \
-  void emberAfPluginZllCommissioningStackStatusCallback(EmberStatus status); \
   void emberAfPluginTestHarnessZ3StackStatusCallback(EmberStatus status); \
+  void emberAfPluginZllCommissioningStackStatusCallback(EmberStatus status); \
 
 
 #define EMBER_AF_GENERATED_PLUGIN_STACK_STATUS_FUNCTION_CALLS \
   emberAfPluginConcentratorStackStatusCallback(status); \
   emberAfPluginNetworkSteeringStackStatusCallback(status); \
-  emberAfPluginZllCommissioningStackStatusCallback(status); \
   emberAfPluginTestHarnessZ3StackStatusCallback(status); \
+  emberAfPluginZllCommissioningStackStatusCallback(status); \
 
 
 #define EMBER_AF_GENERATED_PLUGIN_MESSAGE_SENT_FUNCTION_DECLARATIONS \

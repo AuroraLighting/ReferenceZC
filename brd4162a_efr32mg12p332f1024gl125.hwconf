@@ -46,8 +46,6 @@
     <property object="PORTIO" propertyId="portio.pti.enable.dout" value="Enabled"/>
     <property object="PORTIO" propertyId="portio.pti.location.frc_dframeloc" value="6"/>
     <property object="PORTIO" propertyId="portio.pti.location.frc_doutloc" value="6"/>
-    <property object="PORTIO" propertyId="portio.usart0.enable.cts" value="Enabled"/>
-    <property object="PORTIO" propertyId="portio.usart0.enable.rts" value="Enabled"/>
     <property object="PORTIO" propertyId="portio.usart0.enable.rx" value="Enabled"/>
     <property object="PORTIO" propertyId="portio.usart0.enable.tx" value="Enabled"/>
     <property object="PORTIO" propertyId="portio.usart0.location.usart0_ctsloc" value="30"/>
@@ -72,13 +70,10 @@
     <property object="SPINCP" propertyId="SPINCP.BSP_SPINCP_USART_PORT.MOD" value="USART2"/>
     <property object="UARTNCP" propertyId="UARTNCP.BSP_UARTNCP_USART_PORT.MOD" value="USART0"/>
     <property object="USART0" propertyId="ABPeripheral.included" value="true"/>
-    <property object="USART0" propertyId="USART.BSP_USART_CTS.PIN" value="PA2"/>
     <property object="USART0" propertyId="USART.BSP_USART_MISO.PIN" value="PA1"/>
     <property object="USART0" propertyId="USART.BSP_USART_MOSI.PIN" value="PA0"/>
-    <property object="USART0" propertyId="USART.BSP_USART_RTS.PIN" value="PA3"/>
     <property object="USART0" propertyId="USART.BSP_USART_RX.PIN" value="PA1"/>
     <property object="USART0" propertyId="USART.BSP_USART_TX.PIN" value="PA0"/>
-    <property object="USART0" propertyId="USART.HAL_USART_FLOW_CONTROL.ENUM" value="HAL_USART_FLOW_CONTROL_HWUART"/>
     <property object="USART0" propertyId="USART.HAL_USART_RXSTART.INT" value="16"/>
     <property object="USART0" propertyId="USART.HAL_USART_RXSTOP.INT" value="16"/>
     <property object="USART0" propertyId="USART.HAL_USART_RX_QUEUE_SIZE.INT" value="128"/>

@@ -199,10 +199,6 @@
 #define HAL_SERIAL_USART2_ENABLE                 (0)
 #define HAL_SERIAL_USART3_ENABLE                 (0)
 #define HAL_SERIAL_RXWAKE_ENABLE                 (0)
-#define BSP_SERIAL_APP_CTS_PIN                   (2U)
-#define BSP_SERIAL_APP_CTS_PORT                  (gpioPortA)
-#define BSP_SERIAL_APP_CTS_LOC                   (30U)
-
 #define BSP_SERIAL_APP_RX_PIN                    (1U)
 #define BSP_SERIAL_APP_RX_PORT                   (gpioPortA)
 #define BSP_SERIAL_APP_RX_LOC                    (0U)
@@ -211,20 +207,12 @@
 #define BSP_SERIAL_APP_TX_PORT                   (gpioPortA)
 #define BSP_SERIAL_APP_TX_LOC                    (0U)
 
-#define BSP_SERIAL_APP_RTS_PIN                   (3U)
-#define BSP_SERIAL_APP_RTS_PORT                  (gpioPortA)
-#define BSP_SERIAL_APP_RTS_LOC                   (30U)
-
 #define HAL_SERIAL_APP_RX_QUEUE_SIZE             (128UL)
 #define HAL_SERIAL_APP_BAUD_RATE                 (115200UL)
 #define HAL_SERIAL_APP_RXSTOP                    (16UL)
 #define HAL_SERIAL_APP_RXSTART                   (16UL)
 #define HAL_SERIAL_APP_TX_QUEUE_SIZE             (128UL)
-#define HAL_SERIAL_APP_FLOW_CONTROL              (HAL_USART_FLOW_CONTROL_HWUART)
-#define BSP_SERIAL_ASSERT_CTS_PIN                (2U)
-#define BSP_SERIAL_ASSERT_CTS_PORT               (gpioPortA)
-#define BSP_SERIAL_ASSERT_CTS_LOC                (30U)
-
+#define HAL_SERIAL_APP_FLOW_CONTROL              (HAL_USART_FLOW_CONTROL_NONE)
 #define BSP_SERIAL_ASSERT_RX_PIN                 (1U)
 #define BSP_SERIAL_ASSERT_RX_PORT                (gpioPortA)
 #define BSP_SERIAL_ASSERT_RX_LOC                 (0U)
@@ -233,16 +221,12 @@
 #define BSP_SERIAL_ASSERT_TX_PORT                (gpioPortA)
 #define BSP_SERIAL_ASSERT_TX_LOC                 (0U)
 
-#define BSP_SERIAL_ASSERT_RTS_PIN                (3U)
-#define BSP_SERIAL_ASSERT_RTS_PORT               (gpioPortA)
-#define BSP_SERIAL_ASSERT_RTS_LOC                (30U)
-
 #define HAL_SERIAL_ASSERT_RX_QUEUE_SIZE          (128UL)
 #define HAL_SERIAL_ASSERT_BAUD_RATE              (115200UL)
 #define HAL_SERIAL_ASSERT_RXSTOP                 (16UL)
 #define HAL_SERIAL_ASSERT_RXSTART                (16UL)
 #define HAL_SERIAL_ASSERT_TX_QUEUE_SIZE          (128UL)
-#define HAL_SERIAL_ASSERT_FLOW_CONTROL           (HAL_USART_FLOW_CONTROL_HWUART)
+#define HAL_SERIAL_ASSERT_FLOW_CONTROL           (HAL_USART_FLOW_CONTROL_NONE)
 // [SERIAL]$
 
 // $[SPIDISPLAY]
@@ -261,14 +245,6 @@
 // [UARTNCP]$
 
 // $[USART0]
-#define PORTIO_USART0_CTS_PIN                    (2U)
-#define PORTIO_USART0_CTS_PORT                   (gpioPortA)
-#define PORTIO_USART0_CTS_LOC                    (30U)
-
-#define PORTIO_USART0_RTS_PIN                    (3U)
-#define PORTIO_USART0_RTS_PORT                   (gpioPortA)
-#define PORTIO_USART0_RTS_LOC                    (30U)
-
 #define PORTIO_USART0_RX_PIN                     (1U)
 #define PORTIO_USART0_RX_PORT                    (gpioPortA)
 #define PORTIO_USART0_RX_LOC                     (0U)
@@ -279,10 +255,6 @@
 
 #define HAL_USART0_ENABLE                        (1)
 
-#define BSP_USART0_CTS_PIN                       (2U)
-#define BSP_USART0_CTS_PORT                      (gpioPortA)
-#define BSP_USART0_CTS_LOC                       (30U)
-
 #define BSP_USART0_RX_PIN                        (1U)
 #define BSP_USART0_RX_PORT                       (gpioPortA)
 #define BSP_USART0_RX_LOC                        (0U)
@@ -291,16 +263,12 @@
 #define BSP_USART0_TX_PORT                       (gpioPortA)
 #define BSP_USART0_TX_LOC                        (0U)
 
-#define BSP_USART0_RTS_PIN                       (3U)
-#define BSP_USART0_RTS_PORT                      (gpioPortA)
-#define BSP_USART0_RTS_LOC                       (30U)
-
 #define HAL_USART0_RX_QUEUE_SIZE                 (128UL)
 #define HAL_USART0_BAUD_RATE                     (115200UL)
 #define HAL_USART0_RXSTOP                        (16UL)
 #define HAL_USART0_RXSTART                       (16UL)
 #define HAL_USART0_TX_QUEUE_SIZE                 (128UL)
-#define HAL_USART0_FLOW_CONTROL                  (HAL_USART_FLOW_CONTROL_HWUART)
+#define HAL_USART0_FLOW_CONTROL                  (HAL_USART_FLOW_CONTROL_NONE)
 // [USART0]$
 
 // $[USART1]
